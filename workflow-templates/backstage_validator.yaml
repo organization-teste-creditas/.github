@@ -1,0 +1,17 @@
+name: Catalog-info validation
+
+on:
+  workflow_call:
+
+permissions:
+  id-token: write
+  contents: write
+
+jobs:
+  validate-catalog-info:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: RoadieHQ/backstage-entity-validator@main
+        with:
+          validationSchemaFileLocation: 'custom-validator-file.json'

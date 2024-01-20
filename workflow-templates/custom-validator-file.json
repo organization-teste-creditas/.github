@@ -1,0 +1,77 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "$id": "Entity metadata annotations",
+    "description": "Individual annotation format validations",
+    "type": "object",
+    "required": ["metadata"],
+    "additionalProperties": true,
+    "properties": {
+      "metadata": {
+        "type": "object",
+        "properties": {
+          "annotations": {
+            "type": "object",
+            "description": "Key/value pairs of non-identifying auxiliary information attached to the entity.",
+            "additionalProperties": true,
+            "required": ["creditas.io/impact","creditas.io/tribe"],
+            "properties": {
+              "creditas.io/impact": {
+                  "type": "string",
+                  "pattern": "([lL]ow|[mM]edium|[hH]igh)"
+              },
+              "creditas.io/tribe": {
+                  "type": "string"
+              }
+            },
+            "allOf":[
+              {
+                "properties": {
+                  "creditas.io/provider": {
+                    "type": "string"
+                  }
+                }
+              },
+              {
+                "properties": {
+                  "creditas.io/provider-sla": {
+                    "type": "string"
+                  }
+                }
+              },
+              {
+                "properties": {
+                  "creditas.io/pcn": {
+                    "type": "string",
+                    "description": "Plano de continuidade de negocio"
+                  }
+                }
+              },
+              {
+                "properties": {
+                  "creditas.io/pcn-time": {
+                    "type": "string",
+                    "description": "Tempo para execucao do plano"
+                  }
+                }
+              },
+              {
+                "properties": {
+                  "creditas.io/disaster-recovery": {
+                    "type": "string",
+                    "description": "teste de disaster recovery foi performado?"
+                  }
+                }
+              },
+              {
+                "properties": {
+                  "creditas.io/language": {
+                    "type": "string"
+                  }
+                }
+              }
+            ]
+          }
+        }
+      }
+    }
+  }
